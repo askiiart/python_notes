@@ -1,12 +1,15 @@
 from boundedturtle import BoundedTurtle
 import random
 
-class Drone(BoundedTurtle):
 
-    droneList = []     #static variable
+class Drone(BoundedTurtle):
+    droneList = []  # static variable
+
+    def __init__(self, speed, x_min, x_max, y_min, y_max):
+        pass
 
     @staticmethod
-    def getDrones():
+    def get_drones():
         return [x for x in Drone.droneList if x.__alive]
 
     @staticmethod
@@ -14,9 +17,6 @@ class Drone(BoundedTurtle):
         for drone in Drone.droneList:
             drone.remove()
         Drone.droneList = []
-
-    def __init__(self, speed, xMin, xMax, yMin, yMax):
-        pass
 
     def move(self):
         pass

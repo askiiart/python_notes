@@ -4,7 +4,7 @@ from drone import Drone
 from pygame import mixer
 
 class Bomb(BoundedTurtle):
-    def __init__(self, initHeading, speed, xMin, xMax, yMin, yMax, scoreboard):
+    def __init__(self, initHeading, speed, x_min, xMax, yMin, yMax, scoreboard):
         pass
 
     def move(self):

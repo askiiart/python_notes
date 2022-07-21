@@ -2,15 +2,15 @@ from abc import abstractmethod
 from turtle import Turtle
 
 class BoundedTurtle(Turtle):
-    def __init__(self, speed, xMin, xMax, yMin, yMax):
+    def __init__(self, speed, x_min, x_max, y_min, y_max):
         super().__init__()
-        self.__xMin = xMin
-        self.__xMax = xMax
-        self.__yMin = yMin
-        self.__yMax = yMax
+        self.__x_min = x_min
+        self.__x_max = x_max
+        self.__y_min = y_min
+        self.__y_max = y_max
         self.__speed = speed
 
-    def outOfBounds(self):
+    def out_of_bounds(self):
         xPos, yPos = self.position()
         out = False
         if xPos < self.__xMin or xPos > self.__xMax:
@@ -19,17 +19,17 @@ class BoundedTurtle(Turtle):
             out = True
         return out
 
-    def belowBottomBound(self):
+    def below_bottom_bound(self):
         x_pos, y_pos = self.position()
         out = False
         if y_pos < self.__yMin:
             out = True
         return out
 
-    def getSpeed(self):
+    def get_speed(self):
         return self.__speed
 
-    def getXMin(self):
+    def get_x_min(self):
         return self.__xMin
 
     def getXMax(self):
