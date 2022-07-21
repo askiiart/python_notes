@@ -8,4 +8,4 @@
     - Move forward: `turtle.forward(num_pixels)`
     - Turn right: `turtle.right(degrees)`
 
-- For usage of turtle, look in Etch class. It's pretty self-explanatory.
+- For usage of turtle, look in the example programs (Etch is simplest). It's pretty self-explanatory.
