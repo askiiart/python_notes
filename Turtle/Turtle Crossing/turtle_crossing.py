@@ -23,7 +23,7 @@ car_manager = CarManager()
 
 car_manager.create_car()
 screen.listen()
-screen.onkey(fun=player.move, key='u')  # Listens for 'w' key, and moves
+screen.onkey(fun=player.move, key='space')  # Listens for 'space' key, and moves
 screen.onkey(fun=soft_exit, key='q')
 
 game_is_on = True
