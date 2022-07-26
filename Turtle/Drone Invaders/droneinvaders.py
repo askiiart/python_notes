@@ -1,7 +1,7 @@
 import turtle
 from turtle import Screen
 from drone import Drone
-from lasercannon import LaserCannon
+from rocket import Rocket
 from scoreboard import Scoreboard
 import time
 from sound_and_music import SoundAndMusic
@@ -19,7 +19,7 @@ class DroneInvaders:
         self.screen.bgcolor('light green')
         self.screen.setworldcoordinates(self.x_min, self.y_min, self.x_max, self.y_max)
         self.scoreboard = Scoreboard(x_min + 0.02, y_max - 0.2)
-        self.lasercannon = LaserCannon(self.x_min, self.x_max, self.y_min, self.y_max, self.screen, self.scoreboard)
+        self.lasercannon = Rocket(self.x_min, self.x_max, self.y_min, self.y_max, self.screen, self.scoreboard)
         self.delay = 0.1
         self.game_states = {'Intro': 1, 'Playing': 2, 'InterLevel': 3, 'GameOver': 4, 'Pause': 5}
         self.game_state = self.game_states['Intro']
