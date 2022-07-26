@@ -22,7 +22,7 @@ class Drone(BoundedTurtle):
         pass
 
     @property
-    def alive(self):
+    def is_alive(self):
         pass
 
     def remove(self):
