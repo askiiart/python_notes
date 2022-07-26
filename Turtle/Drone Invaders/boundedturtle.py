@@ -11,18 +11,18 @@ class BoundedTurtle(Turtle):
         self.__speed = speed
 
     def out_of_bounds(self):
-        xPos, yPos = self.position()
+        x_pos, y_pos = self.position()
         out = False
-        if xPos < self.__xMin or xPos > self.__xMax:
+        if x_pos < self.__x_min or x_pos > self.__x_max:
             out = True
-        if yPos < self.__yMin or yPos > self.__yMax:
+        if y_pos < self.__y_min or y_pos > self.__y_max:
             out = True
         return out
 
     def below_bottom_bound(self):
         x_pos, y_pos = self.position()
         out = False
-        if y_pos < self.__yMin:
+        if y_pos < self.__y_min:
             out = True
         return out
 
@@ -30,16 +30,16 @@ class BoundedTurtle(Turtle):
         return self.__speed
 
     def get_x_min(self):
-        return self.__xMin
+        return self.__x_min
 
     def getXMax(self):
-        return self.__xMax
+        return self.__x_max
 
-    def getYMin(self):
-        return self.__yMin
+    def get_y_min(self):
+        return self.__y_min
 
-    def getYMax(self):
-        return self.__yMax
+    def get_y_max(self):
+        return self.__y_max
 
     @abstractmethod
     def remove(self):

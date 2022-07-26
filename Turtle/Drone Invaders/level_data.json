@@ -1,0 +1,32 @@
+{
+  "Level1": {
+    "NumDrones": 10,
+    "MaxDrones": 7,
+    "DroneSpeed": 0.005,
+    "SpawnTime": 2000
+  },
+  "Level2": {
+    "NumDrones": 15,
+    "MaxDrones": 10,
+    "DroneSpeed": 0.01,
+    "SpawnTime": 1500
+  },
+  "Level3": {
+    "NumDrones": 20,
+    "MaxDrones": 15,
+    "DroneSpeed": 0.015,
+    "SpawnTime": 1000
+  },
+  "Level4": {
+    "NumDrones": 30,
+    "MaxDrones": 20,
+    "DroneSpeed": 0.02,
+    "SpawnTime": 800
+  },
+  "Level5": {
+    "NumDrones": 50,
+    "MaxDrones": 25,
+    "DroneSpeed": 0.025,
+    "SpawnTime": 600
+  }
+}

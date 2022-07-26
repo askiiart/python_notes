@@ -1,0 +1,8 @@
+{
+  "Level1": {
+    "NumDrones": 10,
+    "MaxDrones": 7,
+    "DroneSpeed": 0.005,
+    "SpawnTime": 2000
+  }
+}
