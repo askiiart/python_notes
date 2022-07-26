@@ -122,15 +122,15 @@ class Scoreboard(Turtle):
             self.__spawn_time = self.level_data[self.levels[self.current_level]]['SpawnTime']
             SoundAndMusic.play_change_level_sound()
             count = 5
-            countDown = Turtle()
-            countDown.hideturtle()
-            countDown.penup()
-            countDown.goto(0, 0)
+            count_down = Turtle()
+            count_down.hideturtle()
+            count_down.penup()
+            count_down.goto(0, 0)
             SoundAndMusic.pause_music()
             while count >= 0:
-                countDown.write(f'{count}', align=self.CENTER_ALIGN, font=self.GAME_OVER_FONT)
+                count_down.write(f'{count}', align=self.CENTER_ALIGN, font=self.GAME_OVER_FONT)
                 time.sleep(1.0)
-                countDown.clear()
+                count_down.clear()
                 count -= 1
             SoundAndMusic.unpause_music()
             self.draw_scoreboard()
