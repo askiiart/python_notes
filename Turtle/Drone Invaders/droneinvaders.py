@@ -4,11 +4,18 @@ from drone import Drone
 from rocket import Rocket
 from scoreboard import Scoreboard
 import time
-from sound_and_music import SoundAndMusic
+from audio import Audio
 
 
 class DroneInvaders:
     def __init__(self, x_min, x_max, y_min, y_max):
+        """
+        Initialize the game.
+        :param x_min: Minimum x coordinate of the screen.
+        :param x_max: Maximum x coordinate of the screen.
+        :param y_min: Minimum y coordinate of the screen.
+        :param y_max: Maximum y coordinate of the screen.
+        """
         self.done = None
         self.x_min = x_min
         self.x_max = x_max
@@ -31,6 +38,10 @@ class DroneInvaders:
         self.PAUSE_FONT = ('Arial', 24, 'bold')
 
     def play(self):
+        """
+        Play the game.
+        :return: None
+        """
         self.scoreboard.draw_scoreboard()
         self.screen.ontimer(self.add_drone, self.scoreboard.spawn_time)
 
@@ -100,10 +111,14 @@ class DroneInvaders:
             self.screen.ontimer(self.add_drone, self.scoreboard.spawn_time)
 
     def pause(self):
+        """
+        Does things when the game is paused.
+        :return: None
+        """
         if self.game_state == self.game_states['Playing']:
             self.screen.ontimer(self.add_drone, 0)
             self.game_state = self.game_states['Pause']
-            SoundAndMusic.pause_music()
+            Audio.pause_music()
             # Write to screen
             # self.pause_screen.bgcolor('light blue')
             self.rocket.hideturtle()
@@ -114,22 +129,26 @@ class DroneInvaders:
         else:
             self.screen.ontimer(self.add_drone, self.scoreboard.spawn_time)
             self.game_state = self.game_states['Playing']
-            SoundAndMusic.unpause_music()
+            Audio.unpause_music()
             self.rocket.showturtle()
             for drone in Drone.get_drones():
                 drone.showturtle()
             self.pause_turtle.clear()
 
     def draw_pause_message(self):
+        """
+        Draws the pause message to the screen.
+        :return: None
+        """
         self.pause_turtle.clear()
         up = '⇑'
         down = '⇓'
         self.pause_turtle.color('black')
         self.pause_turtle.goto(-0.5, 0.3)
-        self.pause_turtle.write(f'Music volume: {SoundAndMusic.music_volume} of 100', align='left',
+        self.pause_turtle.write(f'Music volume: {Audio.music_volume} of 100', align='left',
                                 font=self.PAUSE_FONT)
         self.pause_turtle.goto(-0.5, 0.2)
-        self.pause_turtle.write(f'Sfx volume: {SoundAndMusic.sfx_volume} of 100', align='left', font=self.PAUSE_FONT)
+        self.pause_turtle.write(f'Sfx volume: {Audio.sfx_volume} of 100', align='left', font=self.PAUSE_FONT)
         self.pause_turtle.goto(-0.5, 0)
         self.pause_turtle.write(f'Music up {up}', align='left', font=self.PAUSE_FONT)
         self.pause_turtle.goto(-0.5, -0.1)
@@ -140,21 +159,41 @@ class DroneInvaders:
         self.pause_turtle.write(f'Sfx down -', align='left', font=self.PAUSE_FONT)
 
     def music_up(self):
-        SoundAndMusic.change_music_volume(1)
+        """
+        Increases the music volume.
+        :return: None
+        """
+        Audio.change_music_volume(1)
         self.draw_pause_message()
 
     def music_down(self):
-        SoundAndMusic.change_music_volume(-1)
+        """
+        Decreases the music volume.
+        :return: None
+        """
+        Audio.change_music_volume(-1)
         self.draw_pause_message()
 
     def sfx_up(self):
-        SoundAndMusic.change_sfx_volume(1)
+        """
+        Increases the sfx volume.
+        :return: None
+        """
+        Audio.change_sfx_volume(1)
         self.draw_pause_message()
 
     def sfx_down(self):
-        SoundAndMusic.change_music_volume(-1)
+        """
+        Decreases the sfx volume.
+        :return: None
+        """
+        Audio.change_music_volume(-1)
         self.draw_pause_message()
 
     def quit(self):
+        """
+        Quits the game.
+        :return: None
+        """
         self.screen.bye()
         exit(0)

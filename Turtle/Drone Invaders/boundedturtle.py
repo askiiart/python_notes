@@ -1,8 +1,17 @@
 from abc import abstractmethod
 from turtle import Turtle
 
+
 class BoundedTurtle(Turtle):
     def __init__(self, speed, x_min, x_max, y_min, y_max):
+        """
+        Initialize the bounded turtle.
+        :param speed: Speed of the turtle.
+        :param x_min: Minimum x coordinate of the screen.
+        :param x_max: Maximum x coordinate of the screen.
+        :param y_min: Minimum y coordinate of the screen.
+        :param y_max: Maximum y coordinate of the screen.
+        """
         super().__init__()
         self.__x_min = x_min
         self.__x_max = x_max

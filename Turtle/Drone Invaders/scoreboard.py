@@ -1,12 +1,17 @@
 from turtle import Turtle
 import json
-from sound_and_music import SoundAndMusic
+from audio import Audio
 import time
 
 
 class Scoreboard(Turtle):
 
     def __init__(self, x, y):
+        """
+        Initialize the scoreboard.
+        :param x: X coordinate of the scoreboard.
+        :param y: Y coordinate of the scoreboard.
+        """
         super().__init__()
         self.score = 0
 
@@ -75,7 +80,7 @@ class Scoreboard(Turtle):
         self.draw_scoreboard()
 
     def game_over(self):
-        SoundAndMusic.stop_music()
+        Audio.stop_music()
         if self.score > self.high_score:
             with open('data.txt', 'w') as file:
                 file.write(str(self.score))
@@ -92,7 +97,7 @@ class Scoreboard(Turtle):
         self.write('The world has been destroyed', align=self.CENTER_ALIGN, font=self.GAME_OVER_FONT)
         if not self.gameover_sound_played:
             self.gameover_sound_played = True
-            SoundAndMusic.play_game_lost_sound()
+            Audio.play_game_lost_sound()
 
     def game_over_won(self):
         self.goto(0, 0.15)
@@ -105,7 +110,7 @@ class Scoreboard(Turtle):
         self.write('Grand Poobah!', align=self.CENTER_ALIGN, font=self.GAME_OVER_FONT)
         if not self.gameover_sound_played:
             self.gameover_sound_played = True
-            SoundAndMusic.play_game_won_sound()
+            Audio.play_game_won_sound()
 
     def increment(self, amount, droneLost=True):
         self.score += amount
@@ -120,19 +125,19 @@ class Scoreboard(Turtle):
             self.__max_drones = self.level_data[self.levels[self.current_level]]['MaxDrones']
             self.__drone_speed = self.level_data[self.levels[self.current_level]]['DroneSpeed']
             self.__spawn_time = self.level_data[self.levels[self.current_level]]['SpawnTime']
-            SoundAndMusic.play_change_level_sound()
+            Audio.play_change_level_sound()
             count = 5
             count_down = Turtle()
             count_down.hideturtle()
             count_down.penup()
             count_down.goto(0, 0)
-            SoundAndMusic.pause_music()
+            Audio.pause_music()
             while count >= 0:
                 count_down.write(f'{count}', align=self.CENTER_ALIGN, font=self.GAME_OVER_FONT)
                 time.sleep(1.0)
                 count_down.clear()
                 count -= 1
-            SoundAndMusic.unpause_music()
+            Audio.unpause_music()
             self.draw_scoreboard()
             return True
         else:
