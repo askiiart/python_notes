@@ -24,7 +24,7 @@ class Drone(BoundedTurtle):
         self.shape('images/Drone64.gif')
         self.resizemode('user')
         self.turtlesize(10, 10, 1)
-        x = random.uniform(x_min * 0.1, x_max * 0.1)
+        x = random.uniform(x_min * 0.9, x_max * 0.9)
         self.goto(x, y_max * 1.1)
         self.setheading(270)
         self.getscreen().tracer(True)

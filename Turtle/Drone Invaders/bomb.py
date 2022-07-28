@@ -28,15 +28,16 @@ class Bomb(BoundedTurtle):
         self.scoreboard = scoreboard
 
     def move(self):
-        self.forward(self.get_speed())
+        self.forward(0.1)
+        if self.out_of_bounds():
+            self.remove()
         for drone in Drone.get_drones():
             if self.distance(drone) < self.get_speed() and self.isvisible():
                 drone.remove()
                 self.remove()
                 Audio.play_explosion_sound()
                 self.scoreboard.increment(4)
-            else:
-                self.getscreen().ontimer(self.move, 100)
+        self.getscreen().ontimer(self.move, 100)
 
     def distance(self, other):
         p1 = self.position()
@@ -44,5 +45,6 @@ class Bomb(BoundedTurtle):
         return math.dist(p1, p2)
 
     def remove(self):
-        self.clear()
         self.hideturtle()
+        self.penup()
+        self.clear()
