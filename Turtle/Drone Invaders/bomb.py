@@ -1,7 +1,7 @@
 from boundedturtle import BoundedTurtle
 import math
 from drone import Drone
-from pygame import mixer
+from audio import Audio
 
 
 class Bomb(BoundedTurtle):
@@ -16,10 +16,27 @@ class Bomb(BoundedTurtle):
         :param y_max: Maximum y coordinate of the screen.
         :param scoreboard: Scoreboard object.
         """
-        pass
+        super().__init__(speed, x_min, x_max, y_min, y_max)
+
+        self.resizemode('user')
+        self.color('red', 'red')
+        self.shape('circle')
+        self.turtlesize(0.25)
+        self.setheading(init_heading)
+        self.getscreen().tracer(False)
+        self.getscreen().ontimer(self.move, 100)
+        self.scoreboard = scoreboard
 
     def move(self):
-        pass
+        self.forward(self.get_speed())
+        for drone in Drone.get_drones():
+            if self.distance(drone) < self.get_speed() and self.isvisible():
+                drone.remove()
+                self.remove()
+                Audio.play_explosion_sound()
+                self.scoreboard.increment(4)
+            else:
+                self.getscreen().ontimer(self.move, 100)
 
     def distance(self, other):
         p1 = self.position()
@@ -27,4 +44,5 @@ class Bomb(BoundedTurtle):
         return math.dist(p1, p2)
 
     def remove(self):
-        pass
+        self.clear()
+        self.hideturtle()

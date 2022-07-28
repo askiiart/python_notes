@@ -66,17 +66,19 @@ class DroneInvaders:
             if self.game_state == self.game_states['Intro']:
                 self.game_state = self.game_states['Playing']
                 self.screen.ontimer(self.add_drone, self.scoreboard.spawn_time)
+
             elif self.game_state == self.game_states['Playing']:
                 # Update drones
                 if self.scoreboard.drones_remaining <= 0:
                     self.game_state = self.game_states['InterLevel']
                 else:
                     for drone in Drone.get_drones():
-                        drone.update()
-                        if drone.out_of_bounds():
+                        out_of_bounds = drone.move()
+                        if out_of_bounds:
                             Drone.destory_all()
                             self.game_state = self.game_states['GameOver']
                             break
+
             elif self.game_state == self.game_states['InterLevel']:
                 self.screen.ontimer(self.add_drone, 0)
                 self.game_state = self.game_states['Playing']
@@ -89,11 +91,13 @@ class DroneInvaders:
                     self.scoreboard.draw_scoreboard()
                 else:
                     self.game_state = self.game_states['GameOver']
+
             elif self.game_state == self.game_states['GameOver']:
                 self.screen.ontimer(self.add_drone, 0)
                 Drone.destory_all()
                 self.rocket.hideturtle()
                 self.scoreboard.game_over()
+
             elif self.game_state == self.game_states['Pause']:
                 pass
 

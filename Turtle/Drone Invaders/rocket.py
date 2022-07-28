@@ -48,4 +48,5 @@ class Rocket(Turtle):
         :return: None
         """
         Bomb(self.heading(), 0.1, self.x_min, self.x_max, self.y_min, self.y_max, self.scoreboard)
+        self.scoreboard.increment(-1, droneLost=False)
         Audio.play_laser_sound()

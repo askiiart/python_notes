@@ -5,7 +5,6 @@ import time
 
 
 class Scoreboard(Turtle):
-
     def __init__(self, x, y):
         """
         Initialize the scoreboard.
