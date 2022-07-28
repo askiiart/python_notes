@@ -32,7 +32,7 @@ class BoundedTurtle(Turtle):
     def get_x_min(self):
         return self.__x_min
 
-    def getXMax(self):
+    def get_x_max(self):
         return self.__x_max
 
     def get_y_min(self):
