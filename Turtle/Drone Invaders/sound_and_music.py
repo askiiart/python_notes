@@ -1,8 +1,8 @@
 import pygame
 from pygame import mixer
 
-class SoundAndMusic:
 
+class SoundAndMusic:
     laser_sound = 0
     explosion_sound = 0
     change_level_sound = 0
@@ -13,7 +13,7 @@ class SoundAndMusic:
 
     @staticmethod
     def start_pygame():
-        #global laser_sound, explosion_sound, change_level_sound, music_volume, sfx_volume
+        # global laser_sound, explosion_sound, change_level_sound, music_volume, sfx_volume
         pygame.init()
         SoundAndMusic.laser_sound = 0.0
         SoundAndMusic.explosion_sound = 0.0
@@ -25,7 +25,7 @@ class SoundAndMusic:
 
     @staticmethod
     def load_music():
-        #global music_volume
+        # global music_volume
         mixer.music.load('sounds/mixed_themes.ogg')
         mixer.music.set_volume(SoundAndMusic.music_volume / 100)
 
@@ -47,7 +47,7 @@ class SoundAndMusic:
 
     @staticmethod
     def load_sounds():
-        #global sfx_volume, laser_sound, explosion_sound, change_level_sound
+        # global sfx_volume, laser_sound, explosion_sound, change_level_sound
         SoundAndMusic.laser_sound = mixer.Sound('sounds/laser.wav')
         SoundAndMusic.laser_sound.set_volume(SoundAndMusic.sfx_volume / 100)
         SoundAndMusic.explosion_sound = mixer.Sound('sounds/explosion.wav')
@@ -58,7 +58,6 @@ class SoundAndMusic:
         SoundAndMusic.game_lost_sound.set_volume(SoundAndMusic.sfx_volume / 100)
         SoundAndMusic.game_won_sound = mixer.Sound('sounds/game_won_sound.wav')
         SoundAndMusic.game_won_sound.set_volume(SoundAndMusic.sfx_volume / 100)
-
 
     @staticmethod
     def play_laser_sound():
@@ -82,7 +81,7 @@ class SoundAndMusic:
 
     @staticmethod
     def change_sfx_volume(delta_volume):
-        #global laser_sound, explosion_sound, change_level_sound, sfx_volume
+        # global laser_sound, explosion_sound, change_level_sound, sfx_volume
         SoundAndMusic.sfx_volume += delta_volume
         if SoundAndMusic.sfx_volume > 100:
             SoundAndMusic.sfx_volume = 100
@@ -95,7 +94,7 @@ class SoundAndMusic:
 
     @staticmethod
     def change_music_volume(delta_volume):
-        #global music_volume
+        # global music_volume
         SoundAndMusic.music_volume += delta_volume
         if SoundAndMusic.music_volume > 100:
             SoundAndMusic.music_volume = 100
@@ -103,8 +102,3 @@ class SoundAndMusic:
             SoundAndMusic.music_volume = 0
         mixer.music.set_volume(SoundAndMusic.music_volume / 100)
         print(SoundAndMusic.music_volume)
-
-
-
-
-
