@@ -125,7 +125,7 @@ def next_image():
     # Get image name and load it
     image_num = (image_num + 1) % len(file_list)
     load = Image.open(file_list[image_num])
-    # pic_label.config(text=file_list[image_num])
+    pic_label.config(text=file_list[image_num])
 
     # Place image on canvas
     img = ImageTk.PhotoImage(load)
@@ -142,13 +142,13 @@ image_container = canvas.create_image(CANVAS_WIDTH // 2, CANVAS_HEIGHT // 2)
 canvas.pack(padx=5, pady=5)
 image_num = -1
 
-# pic_label = tk.Label(text='')
-# pic_label.pack(pady=5)
+pic_label = tk.Label(text='')
+pic_label.pack(pady=5)
 
 next_image()
 
-# next_button = tk.Button(text='Next', command=next_image)
-# next_button.pack(pady=5)
+next_button = tk.Button(text='Next', command=next_image)
+next_button.pack(pady=5)
 
 # This must be at the end of your program
 window.mainloop()
