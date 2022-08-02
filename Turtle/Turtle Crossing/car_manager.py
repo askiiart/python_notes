@@ -69,7 +69,7 @@ class CarManager:
             car_bottom_edge = car.ycor() - 11
             car_left_edge = car.xcor() - 20
             car_right_edge = car.xcor() + 20
-            # It's mom's spaghetti (code)
+            # It's mom's spaghetti code
             if (
                     (
                             (other_top_edge - car_bottom_edge > 0 and car_top_edge - other_top_edge > 0)
