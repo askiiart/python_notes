@@ -4,19 +4,51 @@ from laser import Laser
 
 class Player(pygame.sprite.Sprite):
     def __init__(self, pos, screen_width, speed):
-        pass
+        super().__init__()
+        self.image = pygame.image.load('graphics/player.png').convert_alpha()
+        self.rect = self.image.get_rect(midbottom=pos)
+        self.speed = speed
+        self.screen_width = screen_width
+        self.ready = True
+
+        self.laser_time = 0
+        self.laser_cooldown = 0  # Laser cooldown time in milliseconds
+        self.lasers = pygame.sprite.Group()
+
+        self.laser_sound = pygame.mixer.Sound('audio/laser.wav')
+        self.laser_sound.set_volume(0.2)  # 20 percent
 
     def get_input(self):
-        pass
+        keys = pygame.key.get_pressed()
+        if keys[pygame.K_RIGHT]:  # If right arrow key pressed
+            self.rect.x += self.speed
+        elif keys[pygame.K_LEFT]:
+            self.rect.x -= self.speed
+
+        if keys[pygame.K_SPACE] and self.ready:
+            self.shoot_laser()
+            self.laser_sound.play()
+            self.ready = False
+            self.laser_time = pygame.time.get_ticks()
 
     def recharge(self):
-        pass
+        if not self.ready:
+            current_time = pygame.time.get_ticks()
+            if self.laser_time + self.laser_cooldown <= current_time:
+                self.ready = True
+
 
     def horizontal_bound(self):
-        pass
+        if self.rect.left <= 0:
+            self.rect.left = 0
+        elif self.rect.right >= self.screen_width:
+            self.rect.right = self.screen_width
 
     def shoot_laser(self):
-        pass
+        self.lasers.add(Laser(pos=self.rect.center, speed=-8, screen_height=self.rect.bottom))  # negative speed goes up
 
     def update(self):
-        pass
+        self.get_input()
+        self.horizontal_bound()
+        self.recharge()
+        self.lasers.update()
