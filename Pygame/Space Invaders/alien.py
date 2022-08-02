@@ -14,7 +14,7 @@ class Alien(pygame.sprite.Sprite):
             self.value = 200
         else:
             self.value = 300
-        
+
     def update(self, direction):
         self.rect.x += direction
 
@@ -32,8 +32,6 @@ class UFO(pygame.sprite.Sprite):
             self.speed = 3
 
         self.rect = self.image.get_rect(topleft=(x, int(screen_height * (80 / 600))))
-    
+
     def update(self):
-        pass
-
-
+        self.rect.x += self.speed

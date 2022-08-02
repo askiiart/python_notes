@@ -36,10 +36,7 @@ class Game:
 
         # alien lasers
 
-
         # alien
-
-
 
     def display_lives(self):
         pass

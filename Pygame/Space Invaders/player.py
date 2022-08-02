@@ -37,7 +37,6 @@ class Player(pygame.sprite.Sprite):
             if self.laser_time + self.laser_cooldown <= current_time:
                 self.ready = True
 
-
     def horizontal_bound(self):
         if self.rect.left <= 0:
             self.rect.left = 0
