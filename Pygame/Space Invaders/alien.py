@@ -3,16 +3,36 @@ import pygame
 
 class Alien(pygame.sprite.Sprite):
     def __init__(self, color, x, y):
-        pass
+        super().__init__()
+        file_path = f'graphics/{color}.png'
+        self.image = pygame.image.load(file_path).convert_alpha()
+        self.rect = self.image.get_rect(topleft=(x, y))
 
+        if color == 'red':
+            self.value = 100
+        elif color == 'green':
+            self.value = 200
+        else:
+            self.value = 300
+        
     def update(self, direction):
-        pass
+        self.rect.x += direction
 
 
 class UFO(pygame.sprite.Sprite):
-    def __init__(self, side, screen_width):
-        pass
+    def __init__(self, side, screen_width, screen_height):
+        super().__init__()
+        self.image = pygame.image.load('graphics/ufo.png').convert_alpha()
 
+        if side == 'right':
+            x = screen_width + 50
+            self.speed = -3
+        else:
+            x = -50
+            self.speed = 3
+
+        self.rect = self.image.get_rect(topleft=(x, int(screen_height * (80 / 600))))
+    
     def update(self):
         pass
 
