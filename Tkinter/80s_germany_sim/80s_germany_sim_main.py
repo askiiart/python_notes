@@ -22,7 +22,6 @@ my_scale.pack(pady=5, padx=7)
 
 # Checkbutton
 def checkbutton_used():
-    print(checked_state.get())
     if checked_state.get() == 1:
         bottom_text.config(text='The Berlin wall has been torn down')
     else:

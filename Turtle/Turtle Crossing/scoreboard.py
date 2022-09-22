@@ -25,8 +25,6 @@ class Scoreboard(Turtle):
     def display(self):
         self.clear()
         self.write(f'Level: {self.level}', font=FONT)
-        print(f'Delay: {self.delay}')
-        print(f'Car probability {self.car_prob}')
 
     def game_over(self):
         self.goto(0, -20)
