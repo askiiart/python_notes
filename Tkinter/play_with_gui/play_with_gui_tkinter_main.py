@@ -108,7 +108,7 @@ def combobox_used(event):
 str_value = tk.StringVar()
 my_combobox = ttk.Combobox(width=30, textvariable=str_value)
 my_combobox.bind(sequence='<<ComboboxSelect>>', func=combobox_used)
-my_combobox['values'] = ('Hast', 'du', 'etwas', 'Zeit', 'für', 'mich?')
+my_combobox['values'] = ('Hast', 'du', 'etwas', 'zeit', 'für', 'mich?')
 my_combobox.pack(pady=(5, 108))
 
 # Slideshow presenter
